@@ -1,18 +1,24 @@
 import { Dispatch, SetStateAction, useState } from 'react';
+import { generateTheme } from '../theme/generate_theme';
 
 export type ThemeTokens = {
-  primary: string;
-  secondary: string;
-  accent: string;
+  colorPrimary: string;
+  colorSecondary: string;
+  colorAccent: string;
+  colorGhost: string;
+  colorInk: string;
+  colorEmptyShade: string;
+  colorLightestShade: string;
+  colorLightShade: string;
+  colorMediumShade: string;
+  colorDarkShade: string;
+  colorDarkestShade: string;
+  colorFullShade: string;
 };
 
 export const THEME_TOKENS_KEY = 'theme.tokens';
 
-export const THEME_TOKENS = {
-  primary: '#006BB4',
-  secondary: '#017D73',
-  accent: '#DD0A73',
-};
+export const THEME_TOKENS = generateTheme('#006BB4', '#017D73', '#DD0A73');
 
 export const useTheme = (
   initialThemeTokens: ThemeTokens = JSON.parse(

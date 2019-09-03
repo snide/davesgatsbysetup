@@ -12,20 +12,21 @@
         "jsx": true
       }
     },
-    settings: {
+    "settings": {
       "import/resolver": {
-        node: {
-          extensions: [".ts", ".tsx", ".js", ".json", ".mdx"]
-        },
+        "node": {
+          "extensions": [".ts", ".tsx", ".js", ".json", ".mdx"]
+        }
       },
-      react: {
-        version: "detect"
+      "react": {
+        "version": "detect"
       }
     },
-    plugins: [
+    "plugins": [
      "jsx-a11y",
+    "json",
      "emotion",
-     "prettier",
+     "prettier"
     ],
     "rules": {
       "ban-ts-ignore": 0,

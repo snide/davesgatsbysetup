@@ -7,6 +7,7 @@ import React, {
   ReactNodeArray,
 } from 'react';
 import { useTheme, ThemeTokens, THEME_TOKENS, THEME_TOKENS_KEY } from './theme';
+import { generateTheme } from '../theme/generate_theme';
 
 export const themeSelector = (): [
   ReactNode,
@@ -26,8 +27,18 @@ export const themeSelector = (): [
   };
 
   useLayoutEffect(() => {
-    setStoredThemeTokens(themeTokens);
-  }, [themeTokens]);
+    setStoredThemeTokens(
+      generateTheme(
+        themeTokens.colorPrimary,
+        themeTokens.colorSecondary,
+        themeTokens.colorAccent
+      )
+    );
+  }, [
+    themeTokens.colorPrimary,
+    themeTokens.colorSecondary,
+    themeTokens.colorAccent,
+  ]);
 
   const themeInputs: ReactNodeArray = [];
 
@@ -36,11 +47,13 @@ export const themeSelector = (): [
       themeInputs.push(
         <div key={key}>
           <input
+            id={key}
             name={key}
             type="color"
             value={value}
             onChange={handleInputChange}
           />
+          <label htmlFor={key}>{key}</label>
         </div>
       );
     }

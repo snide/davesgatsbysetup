@@ -6,6 +6,7 @@ import { ThemeTokens } from '../theme/theme';
 import { css, jsx } from '@emotion/core';
 import { darken } from 'polished';
 import { Helmet } from 'react-helmet';
+import { styleFont } from '../services/global_styling/typography/typography';
 
 type indexPageProps = {
   theme: ThemeTokens;
@@ -14,21 +15,23 @@ type indexPageProps = {
 const IndexPage: FunctionComponent<indexPageProps> = props => {
   const { theme } = props;
 
-  const primaryDarkenedHex = darken(0.2, theme.primary)!;
+  const primaryDarkenedHex = darken(0.2, theme.colorPrimary)!;
+
   const bold = css`
-    font-weight: 700;
+    ${styleFont()};
   `;
+
   const primary = css`
-    color: ${theme.primary};
+    color: ${theme.colorPrimary};
   `;
   const secondary = css`
-    color: ${theme.secondary};
+    color: ${theme.colorSecondary};
   `;
   const accent = css`
-    color: ${theme.accent};
+    color: ${theme.colorAccent};
   `;
   const primaryDarkened = css`
-    color: ${darken(0.2, theme.primary)};
+    color: ${darken(0.2, theme.colorPrimary)};
   `;
 
   return (
@@ -36,14 +39,14 @@ const IndexPage: FunctionComponent<indexPageProps> = props => {
       <Helmet title="Index page title" defer={false} />
       <h4>Index page uses the parent theme</h4>
       <ul>
-        <li css={[primary, bold]}>The primary color is {theme.primary}</li>
+        <li css={[primary, bold]}>The primary color is {theme.colorPrimary}</li>
         <li css={[secondary, bold]}>
-          The secondary color is {theme.secondary}
+          The secondary color is {theme.colorSecondary}
         </li>
-        <li css={[accent, bold]}>The accent color is {theme.accent}</li>
+        <li css={[accent, bold]}>The accent color is {theme.colorAccent}</li>
         <li css={[primaryDarkened, bold]}>
           Using polished, the primary color of{' '}
-          <span css={primary}>{theme.primary}</span> is darkened to{' '}
+          <span css={primary}>{theme.colorPrimary}</span> is darkened to{' '}
           {primaryDarkenedHex}
         </li>
       </ul>
