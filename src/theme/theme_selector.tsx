@@ -8,6 +8,7 @@ import React, {
 } from 'react';
 import { useTheme, ThemeTokens, THEME_TOKENS, THEME_TOKENS_KEY } from './theme';
 import { generateTheme } from '../theme/generate_theme';
+import { FontSelector } from './font_selector';
 
 export const themeSelector = (): [
   ReactNode,
@@ -16,14 +17,19 @@ export const themeSelector = (): [
 ] => {
   const [themeTokens, setStoredThemeTokens] = useTheme();
 
-  const handleSizeChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const tokenColorsThatAreEditable = [
+    'colorPrimary',
+    'colorSecondary',
+    'colorAccent',
+  ];
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.currentTarget;
     setStoredThemeTokens({ ...themeTokens, [name]: value });
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const { name, value } = e.currentTarget;
-    setStoredThemeTokens({ ...themeTokens, [name]: value });
+  const handleFontChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+    const { value } = e.currentTarget;
+    setStoredThemeTokens({ ...themeTokens, ['fontFamily']: value });
   };
 
   const handleResetTheme = () => {
@@ -63,6 +69,7 @@ export const themeSelector = (): [
             type="color"
             value={value}
             onChange={handleInputChange}
+            disabled={!tokenColorsThatAreEditable.includes(key)}
           />
           <label htmlFor={key}>{key}</label>
         </div>
@@ -72,35 +79,8 @@ export const themeSelector = (): [
 
   const themeControls = (
     <Fragment>
+      <FontSelector onChange={handleFontChange} />
       {themeInputs}
-      <div>
-        <label htmlFor="size">Size is {themeTokens.size}</label>
-        <input
-          name="size"
-          id="size"
-          type="number"
-          value={themeTokens.size}
-          min={10}
-          max={50}
-          step={2}
-          onChange={handleSizeChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="borderSize">
-          Border size is {themeTokens.borderSize}
-        </label>
-        <input
-          name="borderSize"
-          id="borderSize"
-          type="number"
-          value={themeTokens.borderSize}
-          min={8}
-          max={50}
-          step={2}
-          onChange={handleSizeChange}
-        />
-      </div>
       <button onClick={handleResetTheme}>Reset</button>
     </Fragment>
   );
