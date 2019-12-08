@@ -16,7 +16,13 @@ export type ThemeTokens = {
   colorFullShade: string;
   fontFamily: string;
   size: number;
-  borderSize: number;
+  sizeXS: number;
+  sizeS: number;
+  sizeM: number;
+  sizeL: number;
+  sizeXL: number;
+  sizeXXL: number;
+  borderRadius: number;
 };
 
 export const THEME_TOKENS_KEY = 'theme.tokens';

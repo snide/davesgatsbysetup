@@ -6,7 +6,7 @@ export const generateTheme = (
   accent: string,
   fontFamily: string,
   size: number,
-  borderSize: number
+  borderRadius: number
 ) => {
   const colorPrimary = primary;
   const colorSecondary: string = secondary;
@@ -91,9 +91,10 @@ export const generateTheme = (
     sizeXS: size * 0.25,
     sizeS: size * 0.5,
     sizeM: size * 0.75,
+    sizeL: size * 1.5,
     sizeXL: size * 2,
     sizeXXL: size * 2.5,
-    borderSize: borderSize,
+    borderRadius: borderRadius,
   };
 
   return theme;

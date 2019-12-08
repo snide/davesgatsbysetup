@@ -83,6 +83,7 @@ export const StylesGlobal: FunctionComponent<StylesGlobalProps> = (props) => {
         td,
         article,
         aside,
+        themeTokens.size,
         canvas,
         details,
         embed,

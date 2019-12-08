@@ -1,3 +1,4 @@
+/** @jsx jsx */
 import React, {
   ReactNode,
   Fragment,
@@ -6,6 +7,7 @@ import React, {
   SetStateAction,
   ReactElement,
 } from 'react';
+import { css, jsx } from '@emotion/react';
 import { useTheme, ThemeTokens, THEME_TOKENS, THEME_TOKENS_KEY } from './theme';
 import { generateTheme } from '../theme/generate_theme';
 import { FontSelector } from './font_selector';
@@ -15,7 +17,7 @@ export const themeSelector = (): [
   ThemeTokens,
   Dispatch<SetStateAction<ThemeTokens>>
 ] => {
-  const [themeTokens, setStoredThemeTokens] = useTheme();
+  const [theme, setStoredTheme] = useTheme();
 
   const tokenColorsThatAreEditable = [
     'colorPrimary',
@@ -25,51 +27,76 @@ export const themeSelector = (): [
 
   const handleSizeChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.currentTarget;
-    setStoredThemeTokens({ ...themeTokens, [name]: value });
+    setStoredTheme({ ...theme, [name]: value });
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.currentTarget;
-    setStoredThemeTokens({ ...themeTokens, [name]: value });
+    setStoredTheme({ ...theme, [name]: value });
   };
 
   const handleFontChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     const { value } = e.currentTarget;
-    setStoredThemeTokens({ ...themeTokens, ['fontFamily']: value });
+    setStoredTheme({ ...theme, ['fontFamily']: value });
   };
 
   const handleResetTheme = () => {
     localStorage.removeItem(THEME_TOKENS_KEY);
-    setStoredThemeTokens(THEME_TOKENS);
+    setStoredTheme(THEME_TOKENS);
   };
 
   useLayoutEffect(() => {
-    setStoredThemeTokens(
+    setStoredTheme(
       generateTheme(
-        themeTokens.colorPrimary,
-        themeTokens.colorSecondary,
-        themeTokens.colorAccent,
-        themeTokens.fontFamily,
-        themeTokens.size,
-        themeTokens.borderSize
+        theme.colorPrimary,
+        theme.colorSecondary,
+        theme.colorAccent,
+        theme.fontFamily,
+        theme.size,
+        theme.borderRadius
       )
     );
   }, [
-    themeTokens.colorPrimary,
-    themeTokens.colorSecondary,
-    themeTokens.colorAccent,
-    themeTokens.fontFamily,
-    themeTokens.size,
-    themeTokens.borderSize,
+    theme.colorPrimary,
+    theme.colorSecondary,
+    theme.colorAccent,
+    theme.fontFamily,
+    theme.size,
+    theme.borderRadius,
   ]);
 
   const themeInputs: ReactElement[] = [];
 
-  for (const [key, value] of Object.entries(themeTokens)) {
+  const styleThemeInputsList = css`
+    > * {
+      padding-bottom: ${theme.sizeS}px;
+    }
+  `;
+
+  const styleColorPicker = css`
+    border-radius: ${theme.borderRadius}px;
+    height: ${theme.sizeL}px;
+    width: ${theme.sizeL}px;
+    border: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+
+    &::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+    &::-webkit-color-swatch {
+      border: none;
+      border-radius: ${theme.borderRadius}px;
+    }
+  `;
+
+  for (const [key, value] of Object.entries(theme)) {
     if (key.startsWith('color')) {
       themeInputs.push(
         <div key={key}>
           <input
+            css={styleColorPicker}
             id={key}
             name={key}
             type="color"
@@ -86,14 +113,14 @@ export const themeSelector = (): [
   const themeControls = (
     <Fragment>
       <FontSelector onChange={handleFontChange} />
-      {themeInputs}
+      <div css={styleThemeInputsList}>{themeInputs}</div>
       <div>
-        <label htmlFor="size">Size is {themeTokens.size}</label>
+        <label htmlFor="size">Size is {theme.size}</label>
         <input
           name="size"
           id="size"
           type="number"
-          value={themeTokens.size}
+          value={theme.size}
           min={10}
           max={50}
           step={2}
@@ -101,17 +128,17 @@ export const themeSelector = (): [
         />
       </div>
       <div>
-        <label htmlFor="borderSize">
-          Border size is {themeTokens.borderSize}
+        <label htmlFor="borderRadius">
+          Border size is {theme.borderRadius}
         </label>
         <input
-          name="borderSize"
-          id="borderSize"
+          name="borderRadius"
+          id="borderRadius"
           type="number"
-          value={themeTokens.borderSize}
-          min={8}
-          max={50}
-          step={2}
+          value={theme.borderRadius}
+          min={0}
+          max={100}
+          step={1}
           onChange={handleSizeChange}
         />
       </div>
@@ -119,5 +146,5 @@ export const themeSelector = (): [
     </Fragment>
   );
 
-  return [themeControls, themeTokens, setStoredThemeTokens];
+  return [themeControls, theme, setStoredTheme];
 };
