@@ -22,6 +22,12 @@ export const themeSelector = (): [
     'colorSecondary',
     'colorAccent',
   ];
+
+  const handleSizeChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const { name, value } = e.currentTarget;
+    setStoredThemeTokens({ ...themeTokens, [name]: value });
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.currentTarget;
     setStoredThemeTokens({ ...themeTokens, [name]: value });
@@ -81,6 +87,34 @@ export const themeSelector = (): [
     <Fragment>
       <FontSelector onChange={handleFontChange} />
       {themeInputs}
+      <div>
+        <label htmlFor="size">Size is {themeTokens.size}</label>
+        <input
+          name="size"
+          id="size"
+          type="number"
+          value={themeTokens.size}
+          min={10}
+          max={50}
+          step={2}
+          onChange={handleSizeChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="borderSize">
+          Border size is {themeTokens.borderSize}
+        </label>
+        <input
+          name="borderSize"
+          id="borderSize"
+          type="number"
+          value={themeTokens.borderSize}
+          min={8}
+          max={50}
+          step={2}
+          onChange={handleSizeChange}
+        />
+      </div>
       <button onClick={handleResetTheme}>Reset</button>
     </Fragment>
   );
