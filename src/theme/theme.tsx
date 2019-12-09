@@ -23,6 +23,15 @@ export type ThemeTokens = {
   sizeXL: number;
   sizeXXL: number;
   borderRadius: number;
+  lineHeight: number;
+  fontWeightBold: number;
+  fontSize: number;
+  fontSizeXS: number;
+  fontSizeS: number;
+  fontSizeM: number;
+  fontSizeL: number;
+  fontSizeXL: number;
+  fontSizeXXL: number;
 };
 
 export const THEME_TOKENS_KEY = 'theme.tokens';

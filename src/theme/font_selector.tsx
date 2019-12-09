@@ -1,13 +1,17 @@
 import React, { FunctionComponent } from 'react';
 import { useFetchFonts } from '../services/fetch_fonts';
+import { withTheme } from '@emotion/react';
+import { ThemeTokens } from './theme';
 
 type FontSelectorProps = {
   // TODO: figure out what type of event this is
   onChange: any;
+  theme: ThemeTokens;
 };
 
-export const FontSelector: FunctionComponent<FontSelectorProps> = ({
+const _FontSelector: FunctionComponent<FontSelectorProps> = ({
   onChange,
+  theme,
 }) => {
   // use your own hook to load the data you need
   const { fonts, loading, error } = useFetchFonts();
@@ -16,7 +20,7 @@ export const FontSelector: FunctionComponent<FontSelectorProps> = ({
   if (error) return <div>{error}</div>;
 
   return (
-    <select onChange={onChange}>
+    <select onChange={onChange} value={theme.fontFamily}>
       {fonts &&
         fonts.length > 0 &&
         fonts.map((font: any) => (
@@ -25,3 +29,5 @@ export const FontSelector: FunctionComponent<FontSelectorProps> = ({
     </select>
   );
 };
+
+export const FontSelector = withTheme(_FontSelector);

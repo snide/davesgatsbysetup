@@ -11,6 +11,7 @@ import { css, jsx } from '@emotion/react';
 import { useTheme, ThemeTokens, THEME_TOKENS, THEME_TOKENS_KEY } from './theme';
 import { generateTheme } from '../theme/generate_theme';
 import { FontSelector } from './font_selector';
+import { InputColor } from '../components/forms/input_color';
 
 export const themeSelector = (): [
   ReactNode,
@@ -73,38 +74,18 @@ export const themeSelector = (): [
     }
   `;
 
-  const styleColorPicker = css`
-    border-radius: ${theme.borderRadius}px;
-    height: ${theme.sizeL}px;
-    width: ${theme.sizeL}px;
-    border: none;
-    -webkit-appearance: none;
-    outline: none;
-    cursor: pointer;
-
-    &::-webkit-color-swatch-wrapper {
-      padding: 0;
-    }
-    &::-webkit-color-swatch {
-      border: none;
-      border-radius: ${theme.borderRadius}px;
-    }
-  `;
-
   for (const [key, value] of Object.entries(theme)) {
     if (key.startsWith('color')) {
       themeInputs.push(
         <div key={key}>
-          <input
-            css={styleColorPicker}
+          <InputColor
             id={key}
             name={key}
-            type="color"
             value={value}
             onChange={handleInputChange}
             disabled={!tokenColorsThatAreEditable.includes(key)}
+            label={key}
           />
-          <label htmlFor={key}>{key}</label>
         </div>
       );
     }

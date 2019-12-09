@@ -95,6 +95,16 @@ export const generateTheme = (
     sizeXL: size * 2,
     sizeXXL: size * 2.5,
     borderRadius: borderRadius,
+    lineHeight: 1.5,
+    fontWeightNormal: 400,
+    fontWeightBold: 900,
+    fontSize: size,
+    fontSizeXS: size * 0.75,
+    fontSizeS: size * 0.875,
+    fontSizeM: size * 1.125,
+    fontSizeL: size * 1.25,
+    fontSizeXL: size * 1.75,
+    fontSizeXXL: size * 2.25,
   };
 
   return theme;
