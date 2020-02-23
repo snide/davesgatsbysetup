@@ -32,14 +32,15 @@ export type ThemeTokens = {
   fontSizeL: number;
   fontSizeXL: number;
   fontSizeXXL: number;
+  mode: string;
 };
 
 export const THEME_TOKENS_KEY = 'theme.tokens';
 
 export const THEME_TOKENS = generateTheme(
-  '#006BB4',
-  '#017D73',
-  '#DD0A73',
+  '#b877db',
+  '#20e193',
+  '#df5375',
   'Merriweather',
   16,
   4

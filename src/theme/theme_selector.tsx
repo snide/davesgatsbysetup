@@ -6,12 +6,14 @@ import React, {
   Dispatch,
   SetStateAction,
   ReactElement,
+  useState,
 } from 'react';
 import { css, jsx } from '@emotion/react';
 import { useTheme, ThemeTokens, THEME_TOKENS, THEME_TOKENS_KEY } from './theme';
 import { generateTheme } from '../theme/generate_theme';
 import { FontSelector } from './font_selector';
 import { InputColor } from '../components/forms/input_color';
+import { Button } from '../components/button/button';
 
 export const themeSelector = (): [
   ReactNode,
@@ -19,6 +21,7 @@ export const themeSelector = (): [
   Dispatch<SetStateAction<ThemeTokens>>
 ] => {
   const [theme, setStoredTheme] = useTheme();
+  const [themeIsOpen, setThemeIsOpen] = useState(false);
 
   const tokenColorsThatAreEditable = [
     'colorPrimary',
@@ -91,41 +94,56 @@ export const themeSelector = (): [
     }
   }
 
-  const themeControls = (
-    <Fragment>
-      <FontSelector onChange={handleFontChange} />
-      <div css={styleThemeInputsList}>{themeInputs}</div>
-      <div>
-        <label htmlFor="size">Size is {theme.size}</label>
-        <input
-          name="size"
-          id="size"
-          type="number"
-          value={theme.size}
-          min={10}
-          max={50}
-          step={2}
-          onChange={handleSizeChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="borderRadius">
-          Border size is {theme.borderRadius}
-        </label>
-        <input
-          name="borderRadius"
-          id="borderRadius"
-          type="number"
-          value={theme.borderRadius}
-          min={0}
-          max={100}
-          step={1}
-          onChange={handleSizeChange}
-        />
-      </div>
-      <button onClick={handleResetTheme}>Reset</button>
-    </Fragment>
+  let themeControls = (
+    <Button
+      color="primary"
+      fill
+      onClick={() => setThemeIsOpen(!themeIsOpen)}
+      text="Change theme"
+    />
   );
+  if (themeIsOpen) {
+    themeControls = (
+      <Fragment>
+        <FontSelector onChange={handleFontChange} />
+        <div css={styleThemeInputsList}>{themeInputs}</div>
+        <div>
+          <label htmlFor="size">Size is {theme.size}</label>
+          <input
+            name="size"
+            id="size"
+            type="range"
+            value={theme.size}
+            min={10}
+            max={50}
+            step={2}
+            onChange={handleSizeChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="borderRadius">
+            Border size is {theme.borderRadius}
+          </label>
+          <input
+            name="borderRadius"
+            id="borderRadius"
+            type="range"
+            value={theme.borderRadius}
+            min={0}
+            max={100}
+            step={1}
+            onChange={handleSizeChange}
+          />
+        </div>
+        <Button onClick={handleResetTheme} text="Reset" color="accent" fill />
+        <Button
+          onClick={() => setThemeIsOpen(!themeIsOpen)}
+          text="Close theme"
+          color="primary"
+        />
+      </Fragment>
+    );
+  }
 
   return [themeControls, theme, setStoredTheme];
 };

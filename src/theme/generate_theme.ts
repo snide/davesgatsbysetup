@@ -23,6 +23,8 @@ export const generateTheme = (
     { saturation: 0.05, lightness: 0.05 },
   ];
 
+  let mode = 'light';
+
   if (getContrast(colorPrimary, '#000') >= getContrast(colorPrimary, '#FFF')) {
     shadeScale = [
       { saturation: 0.11, lightness: 0.13 },
@@ -33,6 +35,8 @@ export const generateTheme = (
       { saturation: 0.25, lightness: 0.86 },
       { saturation: 0, lightness: 0 },
     ];
+
+    mode = 'dark';
   }
 
   const colorGhost = '#FFFFFF';
@@ -105,6 +109,7 @@ export const generateTheme = (
     fontSizeL: size * 1.25,
     fontSizeXL: size * 1.75,
     fontSizeXXL: size * 2.25,
+    mode: mode,
   };
 
   return theme;
