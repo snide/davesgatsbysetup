@@ -8,6 +8,9 @@ module.exports = {
   plugins: [
     'gatsby-plugin-offline',
     'gatsby-plugin-typescript',
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-emotion',
@@ -24,9 +27,16 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: `${__dirname}/src/images/`,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'http://davesnider.org',
+        siteUrl: 'http://davesnider.com',
       },
     },
   ],

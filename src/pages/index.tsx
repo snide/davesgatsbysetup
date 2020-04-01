@@ -1,12 +1,11 @@
 /** @jsx jsx */
 import { FunctionComponent } from 'react';
-import { Link } from 'gatsby';
 import { withTheme } from '@emotion/react';
 import { ThemeTokens } from '../theme/theme';
 import { css, jsx } from '@emotion/react';
-import { darken } from 'polished';
 import { Helmet } from 'react-helmet';
-import { styleFont } from '../services/global_styling/typography/typography';
+import { Text } from '../components/text/text';
+import { StaticImage } from 'gatsby-plugin-image';
 
 type indexPageProps = {
   theme: ThemeTokens;
@@ -15,45 +14,53 @@ type indexPageProps = {
 const IndexPage: FunctionComponent<indexPageProps> = (props) => {
   const { theme } = props;
 
-  const primaryDarkenedHex = darken(0.2, theme.colorPrimary)!;
-
-  const bold = css`
-    ${styleFont()};
+  const styleTitle = css`
+    font-size: ${theme.sizeXXL}px;
+    font-weight: ${theme.fontWeightBold};
+    line-height: ${theme.lineHeight};
+    margin: ${theme.sizeXL * 2}px 0 ${theme.sizeXL}px 0;
   `;
 
-  const primary = css`
-    color: ${theme.colorPrimary};
+  const styleHr = css`
+    height: 1px;
+    border-color: ${theme.colorLightShade};
+    margin-bottom: ${theme.sizeXL}px;
   `;
-  const secondary = css`
-    color: ${theme.colorSecondary};
+
+  const styleMain = css`
+    display: flex;
   `;
-  const accent = css`
-    color: ${theme.colorAccent};
+
+  const styleFigure = css`
+    background: ${theme.colorLightestShade};
+    flex-grow: 1;
+    margin-right: ${theme.sizeL}px;
+    flex-basis: 0%;
   `;
-  const primaryDarkened = css`
-    color: ${darken(0.2, theme.colorPrimary)};
+
+  const styleArticle = css`
+    flex-grow: 2;
+    flex-basis: 0%;
   `;
 
   return (
     <div>
       <Helmet title="Index page title" defer={false} />
-      <h4>Index page uses the parent theme</h4>
-      <ul>
-        <li css={[primary, bold]}>The primary color is {theme.colorPrimary}</li>
-        <li css={[secondary, bold]}>
-          The secondary color is {theme.colorSecondary}
-        </li>
-        <li css={[accent, bold]}>The accent color is {theme.colorAccent}</li>
-        <li css={[primaryDarkened, bold]}>
-          Using polished, the primary color of{' '}
-          <span css={primary}>{theme.colorPrimary}</span> is darkened to{' '}
-          {primaryDarkenedHex}
-        </li>
-      </ul>
+      <header>
+        <h1 css={styleTitle}>Hello world</h1>
+      </header>
+      <hr css={styleHr} className="dave" />
+      <main css={styleMain}>
+        <figure css={styleFigure}>
+          <StaticImage src="../images/dave.jpg" alt="Images work" />
+        </figure>
 
-      <p>
-        <Link to="/test/">MDX page</Link>
-      </p>
+        <article css={styleArticle}>
+          <Text>
+            <p>Hello world text</p>
+          </Text>
+        </article>
+      </main>
     </div>
   );
 };

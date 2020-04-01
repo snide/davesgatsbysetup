@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import React, {
   ReactNode,
-  Fragment,
   useLayoutEffect,
   Dispatch,
   SetStateAction,
@@ -41,7 +40,14 @@ export const themeSelector = (): [
 
   const handleFontChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     const { value } = e.currentTarget;
-    setStoredTheme({ ...theme, ['fontFamily']: value });
+    setStoredTheme({ ...theme, ['secondFontFamily']: value });
+  };
+
+  const handleFontTitleChange = (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ): void => {
+    const { value } = e.currentTarget;
+    setStoredTheme({ ...theme, ['fontFamilyTitle']: value });
   };
 
   const handleResetTheme = () => {
@@ -56,6 +62,7 @@ export const themeSelector = (): [
         theme.colorSecondary,
         theme.colorAccent,
         theme.fontFamily,
+        theme.fontFamilyTitle,
         theme.size,
         theme.borderRadius
       )
@@ -75,6 +82,16 @@ export const themeSelector = (): [
     > * {
       padding-bottom: ${theme.sizeS}px;
     }
+  `;
+
+  const styleThemeSelector = css`
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: ${theme.colorEmptyShade};
+    padding: ${theme.sizeXL}px;
   `;
 
   for (const [key, value] of Object.entries(theme)) {
@@ -104,8 +121,12 @@ export const themeSelector = (): [
   );
   if (themeIsOpen) {
     themeControls = (
-      <Fragment>
-        <FontSelector onChange={handleFontChange} />
+      <div css={styleThemeSelector}>
+        <FontSelector onChange={handleFontChange} font={theme.fontFamily} />
+        <FontSelector
+          onChange={handleFontTitleChange}
+          font={theme.fontFamilyTitle}
+        />
         <div css={styleThemeInputsList}>{themeInputs}</div>
         <div>
           <label htmlFor="size">Size is {theme.size}</label>
@@ -141,7 +162,7 @@ export const themeSelector = (): [
           text="Close theme"
           color="primary"
         />
-      </Fragment>
+      </div>
     );
   }
 

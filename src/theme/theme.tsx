@@ -15,6 +15,7 @@ export type ThemeTokens = {
   colorDarkestShade: string;
   colorFullShade: string;
   fontFamily: string;
+  fontFamilyTitle: string;
   size: number;
   sizeXS: number;
   sizeS: number;
@@ -42,6 +43,7 @@ export const THEME_TOKENS = generateTheme(
   '#20e193',
   '#df5375',
   'Merriweather',
+  'IBM Plex Serif',
   16,
   4
 );

@@ -5,6 +5,7 @@ export const generateTheme = (
   secondary: string,
   accent: string,
   fontFamily: string,
+  fontFamilyTitle: string,
   size: number,
   borderRadius: number
 ) => {
@@ -91,6 +92,7 @@ export const generateTheme = (
     colorDarkestShade: colorDarkestShade,
     colorFullShade: colorFullShade,
     fontFamily: fontFamily,
+    fontFamilyTitle: fontFamilyTitle,
     size: size,
     sizeXS: size * 0.25,
     sizeS: size * 0.5,
@@ -101,7 +103,7 @@ export const generateTheme = (
     borderRadius: borderRadius,
     lineHeight: 1.5,
     fontWeightNormal: 400,
-    fontWeightBold: 900,
+    fontWeightBold: 700,
     fontSize: size,
     fontSizeXS: size * 0.75,
     fontSizeS: size * 0.875,

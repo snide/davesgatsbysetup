@@ -6,6 +6,8 @@ import { StylesGlobal } from '../services/global_styling/reset/reset';
 import { ThemeTokens } from './theme';
 import { themeSelector } from './theme_selector';
 import { Helmet } from 'react-helmet';
+import { Header } from '../components/header/header';
+import { Layout } from '../components/layout/layout';
 
 type themeProps = {
   children: React.ReactNode;
@@ -25,19 +27,13 @@ export const Theme: FunctionComponent<themeProps> = (props) => {
           href={`https://fonts.googleapis.com/css?family=${themeTokens.fontFamily.replace(
             /\s/g,
             '+'
-          )}:400,900&display=swap`}
+          )}:400,700&display=swap`}
           rel="stylesheet"
         />
       </Helmet>
-      <h3>Theme selector</h3>
-      <p>
-        Colors selected here update local store and pass down to every page
-        through context
-      </p>
-      {themeControls}
 
-      <h3>Inner content using that theme context</h3>
-      {children}
+      <Header themeControls={themeControls} />
+      <Layout>{children}</Layout>
     </ThemeProvider>
   );
 };
