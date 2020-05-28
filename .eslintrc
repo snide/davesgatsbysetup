@@ -5,17 +5,22 @@
       "plugin:@typescript-eslint/recommended",
       "prettier/@typescript-eslint",
       "prettier/react",
-      "plugin:prettier/recommended"
     ],
     "parserOptions": {
       "ecmaFeatures": {
         "jsx": true
       }
     },
+    "overrides": [
+      {
+        "files": ["*.mdx"],
+        "extends": ["plugin:mdx/recommended", "plugin:mdx/overrides"]
+      }
+    ],
     "settings": {
       "import/resolver": {
         "node": {
-          "extensions": [".ts", ".tsx", ".js", ".json", ".mdx"]
+          "extensions": [".ts", ".tsx", ".js", ".json"]
         }
       },
       "react": {

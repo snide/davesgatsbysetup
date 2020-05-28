@@ -12,7 +12,7 @@
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \"",
     "type-check": "tsc",
-    "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
+    "lint": "eslint --ignore-path .gitignore . --ext ts,tsx,js,jsx,mdx",
     "lint:fix": "yarn lint --fix"
   },
   "dependencies": {
@@ -28,6 +28,7 @@
     "chroma-js": "^2.4.2",
     "emotion-theming": "^11.0.0",
     "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-mdx": "^1.16.0",
     "gatsby": "^4.7.1",
     "gatsby-plugin-canonical-urls": "^4.7.0",
     "gatsby-plugin-emotion": "^7.7.0",

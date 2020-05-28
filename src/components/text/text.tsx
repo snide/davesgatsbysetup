@@ -38,10 +38,10 @@ const _Text: FunctionComponent<TextProps> = ({ theme, children }) => {
         border-bottom: ${theme.sizeXS / 2}px solid ${theme.colorAccent};
         box-shadow: inset 0 -${theme.sizeXS / 2}px 0 ${theme.colorAccent};
         color: ${readableColor(
-          theme.colorEmptyShade,
-          theme.colorInk,
-          theme.colorGhost
-        )};
+    theme.colorEmptyShade,
+    theme.colorInk,
+    theme.colorGhost
+  )};
       }
     }
   `;

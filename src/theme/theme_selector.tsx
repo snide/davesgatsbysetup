@@ -40,7 +40,7 @@ export const themeSelector = (): [
 
   const handleFontChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     const { value } = e.currentTarget;
-    setStoredTheme({ ...theme, ['secondFontFamily']: value });
+    setStoredTheme({ ...theme, ['fontFamily']: value });
   };
 
   const handleFontTitleChange = (

@@ -14,8 +14,8 @@ type HeaderProps = {
 const _Header: FunctionComponent<HeaderProps> = ({ theme, themeControls }) => {
   const styleHeader = css`
     background: ${theme.mode === 'light'
-      ? theme.colorGhost
-      : darken(0.05, theme.colorEmptyShade)};
+    ? theme.colorGhost
+    : darken(0.05, theme.colorEmptyShade)};
     padding: ${theme.sizeS}px;
   `;
 

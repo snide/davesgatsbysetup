@@ -11,7 +11,7 @@ const _Layout: FunctionComponent<LayoutProps> = ({ theme, children }) => {
   const styleLayout = css`
     width: ${theme.size * 62}px;
     margin: auto;
-    max-width: 61.8%;
+    max-width: 90%;
   `;
 
   return <div css={styleLayout}>{children}</div>;

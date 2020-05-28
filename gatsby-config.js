@@ -18,7 +18,14 @@ module.exports = {
         labelFormat: '[filename]--[local]',
       },
     },
-    'gatsby-plugin-mdx',
+    {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+        defaultLayouts: {
+          default: require.resolve('./src/components/layout/layout_mdx.tsx'),
+        },
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {

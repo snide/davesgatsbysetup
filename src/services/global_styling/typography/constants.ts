@@ -1,5 +1,6 @@
-export const FONT_FAMILY =
-  "'Inter UI', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'";
+export const FONT_FAMILY = `'Inter UI', -apple-system, BlinkMacSystemFont,
+  'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'
+`;
 export const CODE_FONT_FAMILY =
   "'Roboto Mono', Consolas, Menlo, Courier, monospace !default";
 export const FONT_WEIGHT_LIGHT = 300;
