@@ -2,13 +2,37 @@
 
 The content in here is rendering markdown, but we can mix in React components as well.
 
-```scss
-table {
-  display: block;
-  width: 100%;
-  overflow: auto;
-  border-left: 1px solid $euiMarkdownAlphaLightShade;
-  border-spacing: 0;
-  border-collapse: collapse;
-}
+```tsx
+/** @jsx jsx */
+import { FunctionComponent } from 'react';
+import { css, jsx } from '@emotion/core';
+import { withTheme } from 'emotion-theming';
+import { ThemeTokens } from '../../theme/theme';
+import { MDXProvider } from '@mdx-js/react';
+import { CodeBlock } from './code_block';
+
+type PageProps = {
+  theme: ThemeTokens;
+};
+
+const components = {
+  pre: (props: any) => <div {...props} />,
+  code: CodeBlock,
+};
+
+export const _Pages: FunctionComponent<PageProps> = ({ theme, children }) => {
+  const styleMdxLayout = css`
+    h3 {
+      font-size: ${theme.fontSizeXL}px;
+    }
+  `;
+
+  return (
+    <MDXProvider components={components}>
+      <div css={styleMdxLayout}>{children}</div>
+    </MDXProvider>
+  );
+};
+
+export default withTheme(_Pages);
 ```
