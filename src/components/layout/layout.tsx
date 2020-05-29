@@ -9,7 +9,7 @@ type LayoutProps = {
 
 const _Layout: FunctionComponent<LayoutProps> = ({ theme, children }) => {
   const styleLayout = css`
-    width: ${theme.size * 62}px;
+    width: ${theme.size * 52}px;
     margin: auto;
     max-width: 90%;
   `;

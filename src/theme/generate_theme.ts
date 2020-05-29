@@ -6,6 +6,7 @@ export const generateTheme = (
   accent: string,
   fontFamily: string,
   fontFamilyTitle: string,
+  fontFamilyCode: string,
   size: number,
   borderRadius: number
 ) => {
@@ -93,6 +94,7 @@ export const generateTheme = (
     colorFullShade: colorFullShade,
     fontFamily: fontFamily,
     fontFamilyTitle: fontFamilyTitle,
+    fontFamilyCode: fontFamilyCode,
     size: size,
     sizeXS: size * 0.25,
     sizeS: size * 0.5,

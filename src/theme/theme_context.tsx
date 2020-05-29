@@ -30,6 +30,20 @@ export const Theme: FunctionComponent<themeProps> = (props) => {
           )}:400,700&display=swap`}
           rel="stylesheet"
         />
+        <link
+          href={`https://fonts.googleapis.com/css?family=${themeTokens.fontFamilyTitle.replace(
+            /\s/g,
+            '+'
+          )}:400,700&display=swap`}
+          rel="stylesheet"
+        />
+        <link
+          href={`https://fonts.googleapis.com/css?family=${themeTokens.fontFamilyCode.replace(
+            /\s/g,
+            '+'
+          )}:400,700&display=swap`}
+          rel="stylesheet"
+        />
       </Helmet>
 
       <Header themeControls={themeControls} />

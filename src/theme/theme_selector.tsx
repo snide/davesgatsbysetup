@@ -50,6 +50,13 @@ export const themeSelector = (): [
     setStoredTheme({ ...theme, ['fontFamilyTitle']: value });
   };
 
+  const handleFontCodeChange = (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ): void => {
+    const { value } = e.currentTarget;
+    setStoredTheme({ ...theme, ['fontFamilyCode']: value });
+  };
+
   const handleResetTheme = () => {
     localStorage.removeItem(THEME_TOKENS_KEY);
     setStoredTheme(THEME_TOKENS);
@@ -63,6 +70,7 @@ export const themeSelector = (): [
         theme.colorAccent,
         theme.fontFamily,
         theme.fontFamilyTitle,
+        theme.fontFamilyCode,
         theme.size,
         theme.borderRadius
       )
@@ -72,6 +80,8 @@ export const themeSelector = (): [
     theme.colorSecondary,
     theme.colorAccent,
     theme.fontFamily,
+    theme.fontFamilyTitle,
+    theme.fontFamilyCode,
     theme.size,
     theme.borderRadius,
   ]);
@@ -126,6 +136,10 @@ export const themeSelector = (): [
         <FontSelector
           onChange={handleFontTitleChange}
           font={theme.fontFamilyTitle}
+        />
+        <FontSelector
+          onChange={handleFontCodeChange}
+          font={theme.fontFamilyCode}
         />
         <div css={styleThemeInputsList}>{themeInputs}</div>
         <div>
