@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { FunctionComponent } from 'react';
 import { Link } from 'gatsby';
-import { withTheme } from 'emotion-theming';
+import { withTheme } from '@emotion/react';
 import { ThemeTokens } from '../theme/theme';
-import { css, jsx } from '@emotion/core';
+import { css, jsx } from '@emotion/react';
 import { darken } from 'polished';
 import { Helmet } from 'react-helmet';
 import { styleFont } from '../services/global_styling/typography/typography';
@@ -12,7 +12,7 @@ type indexPageProps = {
   theme: ThemeTokens;
 };
 
-const IndexPage: FunctionComponent<indexPageProps> = props => {
+const IndexPage: FunctionComponent<indexPageProps> = (props) => {
   const { theme } = props;
 
   const primaryDarkenedHex = darken(0.2, theme.colorPrimary)!;

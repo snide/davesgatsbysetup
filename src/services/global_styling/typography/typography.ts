@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { FONT_FAMILY, FONT_WEIGHT_REGULAR } from './constants';
 
 type styleFontProps = {

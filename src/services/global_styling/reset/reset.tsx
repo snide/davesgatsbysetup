@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import { Global, css, jsx } from '@emotion/core';
-import { withTheme } from 'emotion-theming';
+import { Global, css, jsx } from '@emotion/react';
+import { withTheme } from '@emotion/react';
 import { ThemeTokens } from '../../../theme/theme';
 import { FunctionComponent } from 'react';
 import { styleFont } from '../typography/typography';
@@ -9,7 +9,7 @@ type StylesGlobalProps = {
   theme: ThemeTokens;
 };
 
-export const StylesGlobal: FunctionComponent<StylesGlobalProps> = props => {
+export const StylesGlobal: FunctionComponent<StylesGlobalProps> = (props) => {
   const { theme } = props;
 
   return (

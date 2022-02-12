@@ -23,14 +23,5 @@ module.exports = {
         siteUrl: 'http://davesnider.org',
       },
     },
-    {
-      resolve: 'gatsby-source-graphql',
-      options: {
-        typeName: 'GCMS',
-        fieldName: 'gcms',
-        url:
-          'https://api-uswest.graphcms.com/v1/cjyxztz2k13d301fu7ldz7ftr/master',
-      },
-    },
   ],
 };

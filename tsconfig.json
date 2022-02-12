@@ -1,14 +1,17 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "esnext",
+    "module": "ESNext",
+    "target": "ESNext",
     "jsx": "preserve",
     "lib": ["dom", "esnext"],
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "noUnusedLocals": false,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "typeRoots": ["./types", "**/node_modules/@types", "node_modules/@types"]
+
   },
   "exclude": ["node_modules", "public", ".cache"]
 }

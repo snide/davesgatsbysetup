@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React, { FunctionComponent } from 'react';
-import { ThemeProvider } from 'emotion-theming';
-import { jsx } from '@emotion/core';
+import { ThemeProvider } from '@emotion/react';
+import { jsx } from '@emotion/react';
 import { StylesGlobal } from '../services/global_styling/reset/reset';
 import { ThemeTokens } from './theme';
 import { themeSelector } from './theme_selector';
@@ -11,7 +11,7 @@ type themeProps = {
   tokens: ThemeTokens;
 };
 
-export const Theme: FunctionComponent<themeProps> = props => {
+export const Theme: FunctionComponent<themeProps> = (props) => {
   const { children } = props;
 
   const [themeControls, themeTokens] = themeSelector();
