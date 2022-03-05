@@ -25,7 +25,7 @@ const _Label: FunctionComponent<LabelProps> = ({
     margin-bottom: ${theme.sizeS}px;
     font-weight: ${theme.fontWeightBold};
     display: block;
-    cursor: ${disabled ? 'pointer' : 'default'};
+    cursor: ${disabled ? 'default' : 'pointer'};
   `;
 
   return (

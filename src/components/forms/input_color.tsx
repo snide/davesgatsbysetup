@@ -40,6 +40,7 @@ const _InputColor: FunctionComponent<InputColorProps> = ({
     &::-webkit-color-swatch-wrapper {
       padding: 0;
     }
+
     &::-webkit-color-swatch {
       border: none;
       border-radius: ${theme.borderRadius}px;

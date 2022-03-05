@@ -5,7 +5,7 @@ import { ThemeTokens } from './theme';
 
 type FontSelectorProps = {
   // TODO: figure out what type of event this is
-  onChange: any;
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   theme: ThemeTokens;
 };
 
