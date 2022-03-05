@@ -14,11 +14,21 @@ export type ThemeTokens = {
   colorDarkShade: string;
   colorDarkestShade: string;
   colorFullShade: string;
+  fontFamily: string;
+  size: number;
+  borderSize: number;
 };
 
 export const THEME_TOKENS_KEY = 'theme.tokens';
 
-export const THEME_TOKENS = generateTheme('#006BB4', '#017D73', '#DD0A73');
+export const THEME_TOKENS = generateTheme(
+  '#006BB4',
+  '#017D73',
+  '#DD0A73',
+  'Merriweather',
+  16,
+  4
+);
 
 export const useTheme = (
   initialThemeTokens: ThemeTokens = JSON.parse(
@@ -31,9 +41,8 @@ export const useTheme = (
     localStorage.setItem(THEME_TOKENS_KEY, `${JSON.stringify(tokens)}`);
   };
 
-  const [themeTokens, setThemeTokens] = useState<ThemeTokens>(
-    initialThemeTokens
-  );
+  const [themeTokens, setThemeTokens] =
+    useState<ThemeTokens>(initialThemeTokens);
 
   return [themeTokens, setStoredThemeTokens];
 };

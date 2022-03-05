@@ -6,7 +6,7 @@ This is a simple Gatsby starter to get you up and running with TypeScript and a 
 2. Dynamic theming using [Emotion JS][2] and [Polished][5]
 3. Proper ESLint and Prettier rules
 4. [Husky][4] for precommit hooks and checks
-5. [MDX][3] for page composition
+5. [MDX][3] for page composition. Currently uses v1 until the gatsby plugin updates.
 6. GraphQL source content. Which means you can immediately tie in [GraphCMS][1].
 
 [1]: https://grapchcms.com

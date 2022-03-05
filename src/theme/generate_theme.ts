@@ -3,7 +3,10 @@ import { hsl, parseToHsl, getContrast } from 'polished';
 export const generateTheme = (
   primary: string,
   secondary: string,
-  accent: string
+  accent: string,
+  fontFamily: string,
+  size: number,
+  borderSize: number
 ) => {
   const colorPrimary = primary;
   const colorSecondary: string = secondary;
@@ -83,6 +86,14 @@ export const generateTheme = (
     colorDarkShade: colorDarkShade,
     colorDarkestShade: colorDarkestShade,
     colorFullShade: colorFullShade,
+    fontFamily: fontFamily,
+    size: size,
+    sizeXS: size * 0.25,
+    sizeS: size * 0.5,
+    sizeM: size * 0.75,
+    sizeXL: size * 2,
+    sizeXXL: size * 2.5,
+    borderSize: borderSize,
   };
 
   return theme;

@@ -157,8 +157,8 @@ export const StylesGlobal: FunctionComponent<StylesGlobalProps> = (props) => {
         }
 
         html {
-          ${styleFont()};
-          font-size: 1rem;
+          ${styleFont({ fontFamily: theme.fontFamily, fontWeight: 400 })};
+          font-size: ${theme.size}px;
           color: ${theme.colorDarkestShade};
           height: 100%;
           background-color: ${theme.colorEmptyShade};
