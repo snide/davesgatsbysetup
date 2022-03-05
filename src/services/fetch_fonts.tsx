@@ -10,7 +10,7 @@ export const useFetchFonts = () => {
     setError(null);
 
     fetch(
-      'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDEKxv-YoRAEvZQmpoWgg659aOtADswW30'
+      `https://www.googleapis.com/webfonts/v1/webfonts?key=${process.env.GATSBY_GOOGLE_API_KEY}`
     )
       .then((res) => res.json())
       .then((json) => {

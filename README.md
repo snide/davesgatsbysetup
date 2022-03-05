@@ -9,6 +9,8 @@ This is a simple Gatsby starter to get you up and running with TypeScript and a 
 5. [MDX][3] for page composition. Currently uses v1 until the gatsby plugin updates.
 6. GraphQL source content. Which means you can immediately tie in [GraphCMS][1].
 
+Requires google api key and google font web fonts developer API enabled in GCP
+
 [1]: https://grapchcms.com
 [2]: https://emotion.sh
 [3]: https://mdxjs.com
