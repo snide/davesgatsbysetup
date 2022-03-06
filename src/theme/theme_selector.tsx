@@ -22,39 +22,47 @@ export const themeSelector = (): [
   const [theme, setStoredTheme] = useTheme();
   const [themeIsOpen, setThemeIsOpen] = useState(false);
 
-  const tokenColorsThatAreEditable = [
-    'colorPrimary',
-    'colorSecondary',
-    'colorAccent',
-  ];
+  const tokenColorsThatAreEditable = ['primary', 'secondary', 'accent'];
 
   const handleSizeChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.currentTarget;
-    setStoredTheme({ ...theme, [name]: value });
+    const updatedTheme = { ...theme };
+    // @ts-ignore TODO: figure out how to assign type
+    updatedTheme.size[name] = value;
+    setStoredTheme(updatedTheme);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.currentTarget;
-    setStoredTheme({ ...theme, [name]: value });
+    const updatedTheme = { ...theme };
+    // @ts-ignore TODO: figure out how to assign type
+    updatedTheme.color[name] = value;
+    setStoredTheme(updatedTheme);
   };
 
   const handleFontChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     const { value } = e.currentTarget;
-    setStoredTheme({ ...theme, ['fontFamily']: value });
+    const updatedTheme = { ...theme };
+    updatedTheme.font.family.regular = value;
+    setStoredTheme(updatedTheme);
   };
 
   const handleFontTitleChange = (
     e: React.ChangeEvent<HTMLSelectElement>
   ): void => {
     const { value } = e.currentTarget;
-    setStoredTheme({ ...theme, ['fontFamilyTitle']: value });
+    const updatedTheme = { ...theme };
+    updatedTheme.font.family.title = value;
+    setStoredTheme(updatedTheme);
   };
 
   const handleFontCodeChange = (
     e: React.ChangeEvent<HTMLSelectElement>
   ): void => {
     const { value } = e.currentTarget;
-    setStoredTheme({ ...theme, ['fontFamilyCode']: value });
+    const updatedTheme = { ...theme };
+    updatedTheme.font.family.code = value;
+    setStoredTheme(updatedTheme);
   };
 
   const handleResetTheme = () => {
@@ -65,32 +73,32 @@ export const themeSelector = (): [
   useLayoutEffect(() => {
     setStoredTheme(
       generateTheme(
-        theme.colorPrimary,
-        theme.colorSecondary,
-        theme.colorAccent,
-        theme.fontFamily,
-        theme.fontFamilyTitle,
-        theme.fontFamilyCode,
-        theme.size,
-        theme.borderRadius
+        theme.color.primary,
+        theme.color.secondary,
+        theme.color.accent,
+        theme.font.family.regular,
+        theme.font.family.title,
+        theme.font.family.code,
+        theme.size.base,
+        theme.border.radius
       )
     );
   }, [
-    theme.colorPrimary,
-    theme.colorSecondary,
-    theme.colorAccent,
-    theme.fontFamily,
-    theme.fontFamilyTitle,
-    theme.fontFamilyCode,
-    theme.size,
-    theme.borderRadius,
+    theme.color.primary,
+    theme.color.secondary,
+    theme.color.accent,
+    theme.font.family.regular,
+    theme.font.family.title,
+    theme.font.family.code,
+    theme.size.base,
+    theme.border.radius,
   ]);
 
   const themeInputs: ReactElement[] = [];
 
   const styleThemeInputsList = css`
     > * {
-      padding-bottom: ${theme.sizeS}px;
+      padding-bottom: ${theme.size.s}px;
     }
   `;
 
@@ -100,25 +108,23 @@ export const themeSelector = (): [
     bottom: 0;
     right: 0;
     left: 0;
-    background: ${theme.colorEmptyShade};
-    padding: ${theme.sizeXL}px;
+    background: ${theme.color.emptyShade};
+    padding: ${theme.size.xl}px;
   `;
 
-  for (const [key, value] of Object.entries(theme)) {
-    if (key.startsWith('color')) {
-      themeInputs.push(
-        <div key={key}>
-          <InputColor
-            id={key}
-            name={key}
-            value={value}
-            onChange={handleInputChange}
-            disabled={!tokenColorsThatAreEditable.includes(key)}
-            label={key}
-          />
-        </div>
-      );
-    }
+  for (const [key, value] of Object.entries(theme.color)) {
+    themeInputs.push(
+      <div key={key}>
+        <InputColor
+          id={key}
+          name={key}
+          value={value}
+          onChange={handleInputChange}
+          disabled={!tokenColorsThatAreEditable.includes(key)}
+          label={key}
+        />
+      </div>
+    );
   }
 
   let themeControls = (
@@ -132,23 +138,26 @@ export const themeSelector = (): [
   if (themeIsOpen) {
     themeControls = (
       <div css={styleThemeSelector}>
-        <FontSelector onChange={handleFontChange} font={theme.fontFamily} />
+        <FontSelector
+          onChange={handleFontChange}
+          font={theme.font.family.regular}
+        />
         <FontSelector
           onChange={handleFontTitleChange}
-          font={theme.fontFamilyTitle}
+          font={theme.font.family.title}
         />
         <FontSelector
           onChange={handleFontCodeChange}
-          font={theme.fontFamilyCode}
+          font={theme.font.family.code}
         />
         <div css={styleThemeInputsList}>{themeInputs}</div>
         <div>
-          <label htmlFor="size">Size is {theme.size}</label>
+          <label htmlFor="size">Size is {theme.size.base}</label>
           <input
-            name="size"
-            id="size"
+            name="base"
+            id="base"
             type="range"
-            value={theme.size}
+            value={theme.size.base}
             min={10}
             max={50}
             step={2}
@@ -157,13 +166,13 @@ export const themeSelector = (): [
         </div>
         <div>
           <label htmlFor="borderRadius">
-            Border size is {theme.borderRadius}
+            Border size is {theme.border.radius}
           </label>
           <input
-            name="borderRadius"
-            id="borderRadius"
+            name="border.radius"
+            id="border.radius"
             type="range"
-            value={theme.borderRadius}
+            value={theme.border.radius}
             min={0}
             max={100}
             step={1}

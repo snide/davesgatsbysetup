@@ -20,10 +20,10 @@ const _Label: FunctionComponent<LabelProps> = ({
   // use your own hook to load the data you need
 
   const styleLabel = css`
-    font-size: ${theme.fontSizeXS}px;
-    line-height: ${theme.lineHeight};
-    margin-bottom: ${theme.sizeS}px;
-    font-weight: ${theme.fontWeightBold};
+    font-size: ${theme.font.size.xs}px;
+    line-height: ${theme.font.lineHeightMultiplier};
+    margin-bottom: ${theme.size.s}px;
+    font-weight: ${theme.font.weight.bold};
     display: block;
     cursor: ${disabled ? 'default' : 'pointer'};
   `;

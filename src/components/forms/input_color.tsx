@@ -29,9 +29,9 @@ const _InputColor: FunctionComponent<InputColorProps> = ({
   const randId = uuid();
 
   const styleInputColor = css`
-    border-radius: ${theme.borderRadius}px;
-    height: ${theme.sizeL}px;
-    width: ${theme.sizeL}px;
+    border-radius: ${theme.border.radius}px;
+    height: ${theme.size.l}px;
+    width: ${theme.size.l}px;
     border: none;
     -webkit-appearance: none;
     outline: none;
@@ -43,7 +43,7 @@ const _InputColor: FunctionComponent<InputColorProps> = ({
 
     &::-webkit-color-swatch {
       border: none;
-      border-radius: ${theme.borderRadius}px;
+      border-radius: ${theme.border.radius}px;
     }
   `;
 

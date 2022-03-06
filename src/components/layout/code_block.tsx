@@ -19,30 +19,30 @@ export const _CodeBlock: FunctionComponent<CodeBlockProps> = ({
   const language: any =
     className !== undefined ? className.replace(/language-/, '') : '';
   const styleCodeBlock = css`
-    padding: ${theme.size}px;
-    background: ${theme.colorLightestShade};
-    border-radius: ${theme.borderRadius}px;
-    font-family: ${theme.fontFamilyCode};
+    padding: ${theme.size.base}px;
+    background: ${theme.color.lightestShade};
+    border-radius: ${theme.border.radius}px;
+    font-family: ${theme.font.family.code};
     line-height: 1.3;
-    font-size: ${theme.fontSizeS}px;
+    font-size: ${theme.font.size.s}px;
   `;
 
   const prismTheme: PrismTheme = {
     plain: {
-      color: theme.colorDarkestShade,
-      backgroundColor: theme.colorLightestShade,
+      color: theme.color.darkestShade,
+      backgroundColor: theme.color.lightestShade,
     },
     styles: [
       {
         types: ['prolog', 'constant', 'builtin'],
         style: {
-          color: lighten(0.2, theme.colorAccent),
+          color: lighten(0.2, theme.color.accent),
         },
       },
       {
         types: ['inserted', 'function'],
         style: {
-          color: theme.colorAccent,
+          color: theme.color.accent,
         },
       },
       {
@@ -60,43 +60,43 @@ export const _CodeBlock: FunctionComponent<CodeBlockProps> = ({
       {
         types: ['punctuation', 'symbol'],
         style: {
-          color: theme.colorDarkShade,
+          color: theme.color.darkShade,
         },
       },
       {
         types: ['char', 'selector', 'script'],
         style: {
-          color: theme.colorDarkestShade,
+          color: theme.color.darkestShade,
         },
       },
       {
         types: ['tag', 'string'],
         style: {
-          color: theme.colorSecondary,
+          color: theme.color.secondary,
         },
       },
       {
         types: ['keyword', 'variable'],
         style: {
-          color: theme.colorPrimary,
+          color: theme.color.primary,
         },
       },
       {
         types: ['comment'],
         style: {
-          color: theme.colorMediumShade,
+          color: theme.color.mediumShade,
         },
       },
       {
         types: ['operator'],
         style: {
-          color: theme.colorAccent,
+          color: theme.color.accent,
         },
       },
       {
         types: ['attr-name'],
         style: {
-          color: lighten(0.2, theme.colorSecondary),
+          color: lighten(0.2, theme.color.secondary),
         },
       },
     ],

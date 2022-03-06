@@ -10,38 +10,38 @@ type TextProps = {
 
 const _Text: FunctionComponent<TextProps> = ({ theme, children }) => {
   const styleText = css`
-    font-size: ${theme.fontSize}px;
-    line-height: ${theme.lineHeight};
+    font-size: ${theme.font.size.m}px;
+    line-height: ${theme.font.lineHeightMultiplier};
 
     p:not(:last-of-type) {
-      margin-bottom: ${theme.sizeL}px;
+      margin-bottom: ${theme.size.l}px;
     }
 
     p:first-of-type:first-letter {
-      font-size: ${theme.fontSizeXXL * 2}px;
-      line-height: ${theme.fontSizeXXL * 1.9}px;
+      font-size: ${theme.font.size.xxl * 2}px;
+      line-height: ${theme.font.size.xxl * 1.9}px;
       float: left;
-      padding-right: ${theme.sizeS}px;
+      padding-right: ${theme.size.s}px;
     }
     a {
       background-color: transparent;
       color: inherit;
       text-decoration: none;
       transition: background 0.15s cubic-bezier(0.33, 0.66, 0.66, 1);
-      border-bottom: ${theme.sizeXS / 2}px solid ${theme.colorPrimary};
-      box-shadow: inset 0 -${theme.sizeXS / 2}px 0 ${theme.colorPrimary};
+      border-bottom: ${theme.size.xs / 2}px solid ${theme.color.primary};
+      box-shadow: inset 0 -${theme.size.xs / 2}px 0 ${theme.color.primary};
       overflow-wrap: break-word;
       word-break: break-word;
       word-wrap: break-word;
 
       &:hover {
-        border-bottom: ${theme.sizeXS / 2}px solid ${theme.colorAccent};
-        box-shadow: inset 0 -${theme.sizeXS / 2}px 0 ${theme.colorAccent};
+        border-bottom: ${theme.size.xs / 2}px solid ${theme.color.accent};
+        box-shadow: inset 0 -${theme.size.xs / 2}px 0 ${theme.color.accent};
         color: ${readableColor(
-    theme.colorEmptyShade,
-    theme.colorInk,
-    theme.colorGhost
-  )};
+          theme.color.emptyShade,
+          theme.color.ink,
+          theme.color.ghost
+        )};
       }
     }
   `;

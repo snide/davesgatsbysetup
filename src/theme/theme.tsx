@@ -1,41 +1,61 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import { generateTheme } from '../theme/generate_theme';
 
-export type ThemeTokens = {
-  colorPrimary: string;
-  colorSecondary: string;
-  colorAccent: string;
-  colorGhost: string;
-  colorInk: string;
-  colorEmptyShade: string;
-  colorLightestShade: string;
-  colorLightShade: string;
-  colorMediumShade: string;
-  colorDarkShade: string;
-  colorDarkestShade: string;
-  colorFullShade: string;
-  fontFamily: string;
-  fontFamilyTitle: string;
-  fontFamilyCode: string;
-  size: number;
-  sizeXS: number;
-  sizeS: number;
-  sizeM: number;
-  sizeL: number;
-  sizeXL: number;
-  sizeXXL: number;
-  borderRadius: number;
-  lineHeight: number;
-  fontWeightBold: number;
-  fontSize: number;
-  fontSizeXS: number;
-  fontSizeS: number;
-  fontSizeM: number;
-  fontSizeL: number;
-  fontSizeXL: number;
-  fontSizeXXL: number;
+export interface ThemeTokens {
+  color: {
+    primary: string;
+    secondary: string;
+    accent: string;
+    ghost: string;
+    ink: string;
+    emptyShade: string;
+    lightestShade: string;
+    lightShade: string;
+    mediumShade: string;
+    darkShade: string;
+    darkestShade: string;
+    fullShade: string;
+  };
+  base: number;
+  size: {
+    xs: number;
+    s: number;
+    m: number;
+    base: number;
+    l: number;
+    xl: number;
+    xxl: number;
+  };
+  border: {
+    radius: number;
+  };
+  font: {
+    lineHeightMultiplier: number;
+    weight: {
+      light: number;
+      regular: number;
+      medium: number;
+      semibold: number;
+      bold: number;
+    };
+    size: {
+      xxxs: number;
+      xxs: number;
+      xs: number;
+      s: number;
+      m: number;
+      l: number;
+      xl: number;
+      xxl: number;
+    };
+    family: {
+      regular: string;
+      title: string;
+      code: string;
+    };
+  };
   mode: string;
-};
+}
 
 export const THEME_TOKENS_KEY = 'theme.tokens';
 

@@ -1,4 +1,5 @@
 import { hsl, parseToHsl, getContrast } from 'polished';
+import { ThemeTokens } from './theme';
 
 export const generateTheme = (
   primary: string,
@@ -79,41 +80,60 @@ export const generateTheme = (
     lightness: shadeScale[6].lightness,
   });
 
-  const theme = {
-    colorPrimary: colorPrimary,
-    colorSecondary: colorSecondary,
-    colorAccent: colorAccent,
-    colorGhost: colorGhost,
-    colorInk: colorInk,
-    colorEmptyShade: colorEmptyShade,
-    colorLightestShade: colorLightestShade,
-    colorLightShade: colorLightShade,
-    colorMediumShade: colorMediumShade,
-    colorDarkShade: colorDarkShade,
-    colorDarkestShade: colorDarkestShade,
-    colorFullShade: colorFullShade,
-    fontFamily: fontFamily,
-    fontFamilyTitle: fontFamilyTitle,
-    fontFamilyCode: fontFamilyCode,
-    size: size,
-    sizeXS: size * 0.25,
-    sizeS: size * 0.5,
-    sizeM: size * 0.75,
-    sizeL: size * 1.5,
-    sizeXL: size * 2,
-    sizeXXL: size * 2.5,
-    borderRadius: borderRadius,
-    lineHeight: 1.5,
-    fontWeightNormal: 400,
-    fontWeightBold: 700,
-    fontSize: size,
-    fontSizeXS: size * 0.75,
-    fontSizeS: size * 0.875,
-    fontSizeM: size * 1.125,
-    fontSizeL: size * 1.25,
-    fontSizeXL: size * 1.75,
-    fontSizeXXL: size * 2.25,
+  const theme: ThemeTokens = {
     mode: mode,
+    color: {
+      primary: colorPrimary,
+      secondary: colorSecondary,
+      accent: colorAccent,
+      ghost: colorGhost,
+      ink: colorInk,
+      emptyShade: colorEmptyShade,
+      lightestShade: colorLightestShade,
+      lightShade: colorLightShade,
+      mediumShade: colorMediumShade,
+      darkShade: colorDarkShade,
+      darkestShade: colorDarkestShade,
+      fullShade: colorFullShade,
+    },
+    base: size,
+    size: {
+      xs: size * 0.25,
+      s: size * 0.5,
+      m: size * 0.75,
+      base: size,
+      l: size * 1.5,
+      xl: size * 2,
+      xxl: size * 2.5,
+    },
+    border: {
+      radius: borderRadius,
+    },
+    font: {
+      lineHeightMultiplier: 1.5,
+      weight: {
+        light: 300,
+        regular: 400,
+        medium: 500,
+        semibold: 600,
+        bold: 700,
+      },
+      size: {
+        xxxs: 0.5625 * size,
+        xxs: 0.6875 * size,
+        xs: 0.75 * size,
+        s: 0.875 * size,
+        m: 1 * size,
+        l: 1.25 * size,
+        xl: 1.75 * size,
+        xxl: 2.125 * size,
+      },
+      family: {
+        regular: fontFamily,
+        title: fontFamilyTitle,
+        code: fontFamilyCode,
+      },
+    },
   };
 
   return theme;

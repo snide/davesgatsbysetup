@@ -17,7 +17,7 @@ const components = {
 export const _Pages: FunctionComponent<PageProps> = ({ theme, children }) => {
   const styleMdxLayout = css`
     h3 {
-      font-size: ${theme.fontSizeXL}px;
+      font-size: ${theme.font.size.xl}px;
     }
   > *:first-child {
     margin-top: 0 !important;
@@ -35,7 +35,7 @@ export const _Pages: FunctionComponent<PageProps> = ({ theme, children }) => {
   table,
   pre {
     margin-top: 0;
-    margin-bottom: ${theme.fontSize}px;
+    margin-bottom: ${theme.size.base}px;
     line-height: 1.5;
   }
 
@@ -50,51 +50,51 @@ export const _Pages: FunctionComponent<PageProps> = ({ theme, children }) => {
   h4,
   h5,
   h6 {
-    font-family: ${theme.fontFamilyTitle};
+    font-family: ${theme.font.family.title};
     margin-top: 0;
-    margin-bottom: ${theme.fontSizeXS}px;
+    margin-bottom: ${theme.font.size.xs}px;
   }
 
   h1 {
-    font-size: ${theme.fontSizeXXL}px;
+    font-size: ${theme.font.size.xxl}px;
     line-height: 1.333333;
-    font-weight: ${theme.fontWeightBold};
+    font-weight: ${theme.font.weight.bold};
   }
 
   h2 {
-    font-size: ${theme.fontSizeXL}px;
+    font-size: ${theme.font.size.xl}px;
     line-height: 1.428571;
-    font-weight: ${theme.fontWeightBold};
+    font-weight: ${theme.font.weight.bold};
   }
 
   h3 {
-    font-size: ${theme.fontSizeL}px;
+    font-size: ${theme.font.size.l}px;
     line-height: 1.6;
-    font-weight: ${theme.fontWeightBold};
+    font-weight: ${theme.font.weight.bold};
   }
 
   h4 {
-    margin-bottom: ${theme.fontSize}px;
+    margin-bottom: ${theme.size.base}px;
     line-height: 1.5;
-    font-weight: ${theme.fontWeightBold};
+    font-weight: ${theme.font.weight.bold};
   }
 
   h5 {
-    margin-bottom: ${theme.fontSize}px;
+    margin-bottom: ${theme.size.base}px;
     line-height: 1.142857;
-    font-weight: ${theme.fontWeightBold};
+    font-weight: ${theme.font.weight.bold};
   }
 
   h6 {
-    margin-bottom: ${theme.fontSizeS}px;
+    margin-bottom: ${theme.size.base}px;
     line-height: 1.333333em;
     text-transform: uppercase;
-    font-weight: ${theme.fontWeightBold};
+    font-weight: ${theme.font.weight.bold};
   }
 
   h1,
   h2 {
-    padding-bottom: ${theme.sizeL}px;
+    padding-bottom: ${theme.size.l}px;
   }
 
   // 3. Images
@@ -106,8 +106,8 @@ export const _Pages: FunctionComponent<PageProps> = ({ theme, children }) => {
 
   // 4. Blockquotes
   blockquote {
-    padding: 0 ${theme.size}px;
-    border-left: ${theme.sizeXS}px solid ${theme.colorLightShade};
+    padding: 0 ${theme.size.base}px;
+    border-left: ${theme.size.xs}px solid ${theme.color.lightShade};
   }
 
   // 5. Horizontal rules
@@ -116,8 +116,8 @@ export const _Pages: FunctionComponent<PageProps> = ({ theme, children }) => {
     background: transparent;
     height: 2px;
     padding: 0;
-    margin: ${theme.sizeXL}px 0;
-    background-color: ${theme.colorLightShade};
+    margin: ${theme.size.xl}px 0;
+    background-color: ${theme.color.lightShade};
     border: none;
   }
 
@@ -136,9 +136,9 @@ export const _Pages: FunctionComponent<PageProps> = ({ theme, children }) => {
   ul,
   ol {
 
-    padding-left: ${theme.sizeL}px;
+    padding-left: ${theme.size.l}px;
     margin-top: 0;
-    margin-bottom: ${theme.size}px;
+    margin-bottom: ${theme.size.base}px;
   }
 
   ul {
@@ -178,11 +178,11 @@ export const _Pages: FunctionComponent<PageProps> = ({ theme, children }) => {
   }
 
   li > p {
-    margin-bottom: ${theme.sizeXS}px;
+    margin-bottom: ${theme.size.xs}px;
   }
 
   li + li {
-    margin-top: ${theme.sizeXS}px;
+    margin-top: ${theme.size.xs}px;
   }
 
   .task-list-item {
@@ -190,7 +190,7 @@ export const _Pages: FunctionComponent<PageProps> = ({ theme, children }) => {
   }
 
   .task-list-item + .task-list-item {
-    margin-top: ${theme.sizeXS};
+    margin-top: ${theme.size.xs};
   }
 
   .task-list-item input {
@@ -203,7 +203,7 @@ export const _Pages: FunctionComponent<PageProps> = ({ theme, children }) => {
     display: block;
     width: 100%;
     overflow: auto;
-    border-left: 1px solid ${theme.colorLightShade};
+    border-left: 1px solid ${theme.color.lightShade};
     border-spacing: 0;
     border-collapse: collapse;
   }
@@ -215,18 +215,18 @@ export const _Pages: FunctionComponent<PageProps> = ({ theme, children }) => {
 
   table th,
   table td {
-    padding: ${theme.sizeXS}px ${theme.sizeS}px;
-    border-top: 1px solid ${theme.colorLightShade};
-    border-bottom: 1px solid ${theme.colorLightShade};
+    padding: ${theme.size.xs}px ${theme.size.s}px;
+    border-top: 1px solid ${theme.color.lightShade};
+    border-bottom: 1px solid ${theme.color.lightShade};
 
     &:last-child {
-      border-right: 1px solid ${theme.colorLightShade};
+      border-right: 1px solid ${theme.color.lightShade};
     }
   }
 
   table tr {
     background-color: transparent;
-    border-top: 1px solid ${theme.colorLightShade};
+    border-top: 1px solid ${theme.color.lightShade};
   }
 }`;
 

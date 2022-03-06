@@ -24,9 +24,9 @@ const _Button: FunctionComponent<ButtonProps> = ({
   onClick,
 }) => {
   const colorToTheme: { [color in ButtonColors]: string } = {
-    primary: theme.colorPrimary,
-    secondary: theme.colorSecondary,
-    accent: theme.colorAccent,
+    primary: theme.color.primary,
+    secondary: theme.color.secondary,
+    accent: theme.color.accent,
   };
 
   let buttonBackgroundColor = colorToTheme[color];
@@ -40,22 +40,23 @@ const _Button: FunctionComponent<ButtonProps> = ({
   const buttonTextColor = readableColor(buttonBackgroundColor);
 
   const styleButton = css`
-    font-size: ${theme.fontSize}px;
+    font-family: ${theme.font.family.regular};
+    font-size: ${theme.size.base}px;
     display: inline-block;
-    border-radius: ${theme.borderRadius}px;
+    border-radius: ${theme.border.radius}px;
     background-color: ${buttonBackgroundColor};
     cursor: ${disabled ? 'default' : 'pointer'};
     color: ${buttonTextColor};
     display: inline-block;
     appearance: none;
-    height: ${theme.sizeXL}px;
-    line-height: ${theme.sizeXL}px;
+    height: ${theme.size.xl}px;
+    line-height: ${theme.size.xl}px;
     text-decoration: none;
     text-align: center;
     white-space: nowrap;
     max-width: 100%;
     vertical-align: middle;
-    padding: 0 ${theme.size}px;
+    padding: 0 ${theme.size.base}px;
   `;
 
   return (

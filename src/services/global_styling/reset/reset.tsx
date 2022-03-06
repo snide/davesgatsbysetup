@@ -158,11 +158,14 @@ export const StylesGlobal: FunctionComponent<StylesGlobalProps> = (props) => {
         }
 
         html {
-          ${styleFont({ fontFamily: theme.fontFamily, fontWeight: 400 })};
+          ${styleFont({
+            fontFamily: theme.font.family.regular,
+            fontWeight: theme.font.weight.regular,
+          })};
           font-size: ${theme.size}px;
-          color: ${theme.colorDarkestShade};
+          color: ${theme.color.darkestShade};
           height: 100%;
-          background-color: ${theme.colorEmptyShade};
+          background-color: ${theme.color.emptyShade};
         }
 
         body {
@@ -175,7 +178,7 @@ export const StylesGlobal: FunctionComponent<StylesGlobalProps> = (props) => {
 
         a {
           text-decoration: none;
-          color: ${theme.colorPrimary};
+          color: ${theme.color.primary};
 
           &:hover {
             text-decoration: none;

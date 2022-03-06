@@ -24,21 +24,21 @@ export const Theme: FunctionComponent<themeProps> = (props) => {
       <StylesGlobal theme={themeTokens} />
       <Helmet>
         <link
-          href={`https://fonts.googleapis.com/css?family=${themeTokens.fontFamily.replace(
+          href={`https://fonts.googleapis.com/css?family=${themeTokens.font.family.regular.replace(
             /\s/g,
             '+'
           )}:400,700&display=swap`}
           rel="stylesheet"
         />
         <link
-          href={`https://fonts.googleapis.com/css?family=${themeTokens.fontFamilyTitle.replace(
+          href={`https://fonts.googleapis.com/css?family=${themeTokens.font.family.title.replace(
             /\s/g,
             '+'
           )}:400,700&display=swap`}
           rel="stylesheet"
         />
         <link
-          href={`https://fonts.googleapis.com/css?family=${themeTokens.fontFamilyCode.replace(
+          href={`https://fonts.googleapis.com/css?family=${themeTokens.font.family.code.replace(
             /\s/g,
             '+'
           )}:400,700&display=swap`}

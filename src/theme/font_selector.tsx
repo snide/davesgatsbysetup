@@ -22,7 +22,7 @@ const _FontSelector: FunctionComponent<FontSelectorProps> = ({
 
   const styleSelect = css`
     display: inline-block;
-    margin-bottom: ${theme.size}px;
+    margin-bottom: ${theme.size.base}px;
   `;
 
   if (loading) return <div>Loading...</div>;

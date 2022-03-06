@@ -11,18 +11,18 @@ type HeaderProps = {
 
 const _Header: FunctionComponent<HeaderProps> = ({ theme, themeControls }) => {
   const styleHeader = css`
-    padding: ${theme.sizeXL}px;
-    margin-bottom: ${theme.sizeXL}px;
+    padding: ${theme.size.xl}px;
+    margin-bottom: ${theme.size.xl}px;
   `;
 
   const styleNav = css`
     display: flex;
     align-items: flex-end;
-    font-size: ${theme.size}px;
-    font-family: ${theme.fontFamilyTitle};
+    font-size: ${theme.size.m}px;
+    font-family: ${theme.font.family.title};
 
     > li + li {
-      margin-left: ${theme.size}px;
+      margin-left: ${theme.size.base}px;
     }
   `;
 
@@ -33,9 +33,9 @@ const _Header: FunctionComponent<HeaderProps> = ({ theme, themeControls }) => {
   `;
 
   const styleTitle = css`
-    font-weight: ${theme.fontWeightBold};
-    font-size: ${theme.sizeL}px;
-    margin-right: ${theme.sizeL}px;
+    font-weight: ${theme.font.weight.bold};
+    font-size: ${theme.font.size.l}px;
+    margin-right: ${theme.size.l}px;
   `;
 
   return (

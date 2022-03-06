@@ -15,16 +15,16 @@ const IndexPage: FunctionComponent<indexPageProps> = (props) => {
   const { theme } = props;
 
   const styleTitle = css`
-    font-size: ${theme.sizeXXL}px;
-    font-weight: ${theme.fontWeightBold};
-    line-height: ${theme.lineHeight};
-    margin: ${theme.sizeXL * 2}px 0 ${theme.sizeXL}px 0;
+    font-size: ${theme.size.xxl}px;
+    font-weight: ${theme.font.weight.bold};
+    line-height: ${theme.font.lineHeightMultiplier};
+    margin: ${theme.size.xl * 2}px 0 ${theme.size.xl}px 0;
   `;
 
   const styleHr = css`
     height: 1px;
-    border-color: ${theme.colorLightShade};
-    margin-bottom: ${theme.sizeXL}px;
+    border-color: ${theme.color.lightShade};
+    margin-bottom: ${theme.size.xl}px;
   `;
 
   const styleMain = css`
@@ -32,9 +32,9 @@ const IndexPage: FunctionComponent<indexPageProps> = (props) => {
   `;
 
   const styleFigure = css`
-    background: ${theme.colorLightestShade};
+    background: ${theme.color.lightestShade};
     flex-grow: 1;
-    margin-right: ${theme.sizeL}px;
+    margin-right: ${theme.size.l}px;
     flex-basis: 0%;
   `;
 
