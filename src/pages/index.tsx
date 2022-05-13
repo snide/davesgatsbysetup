@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
+import { graphql, Link } from 'gatsby';
 import { withTheme } from '@emotion/react';
 import { ThemeTokens } from '../theme/theme';
 import { css, jsx } from '@emotion/react';
@@ -9,10 +10,11 @@ import { StaticImage } from 'gatsby-plugin-image';
 
 type indexPageProps = {
   theme: ThemeTokens;
+  data: any;
 };
 
-const IndexPage: FunctionComponent<indexPageProps> = (props) => {
-  const { theme } = props;
+const IndexPage: FunctionComponent<indexPageProps> = ({ theme, data }) => {
+  const blogs = data.allMdx.nodes;
 
   const styleTitle = css`
     font-size: ${theme.size.xxl}px;
@@ -60,9 +62,30 @@ const IndexPage: FunctionComponent<indexPageProps> = (props) => {
             <p>Hello world text</p>
           </Text>
         </article>
+        {blogs.map((node: any) => (
+          <Link to={node.slug}>
+            <h3>{node.frontmatter.title}</h3>
+            <p>{node.frontmatter.date}</p>
+          </Link>
+        ))}
       </main>
     </div>
   );
 };
+
+export const query = graphql`
+  query SITE_INDEX_QUERY {
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+      nodes {
+        id
+        slug
+        frontmatter {
+          title
+          date(formatString: "YYYY MMMM Do")
+        }
+      }
+    }
+  }
+`;
 
 export default withTheme(IndexPage);

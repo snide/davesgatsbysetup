@@ -21,9 +21,17 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
+        extensions: [`.mdx`, `.md`],
         defaultLayouts: {
           default: require.resolve('./src/components/layout/layout_mdx.tsx'),
         },
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'blog',
+        path: `${__dirname}/blog/`,
       },
     },
     {

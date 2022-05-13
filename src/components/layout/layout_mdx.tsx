@@ -27,6 +27,7 @@ export const _Pages: FunctionComponent<PageProps> = ({ theme, children }) => {
     margin-bottom: 0 !important;
   }
 
+
   p,
   blockquote,
   ul,
@@ -36,7 +37,13 @@ export const _Pages: FunctionComponent<PageProps> = ({ theme, children }) => {
   pre {
     margin-top: 0;
     margin-bottom: ${theme.size.base}px;
-    line-height: 1.5;
+    line-height: ${theme.font.lineHeightMultiplier};
+  }
+
+  p {
+    font-size: ${theme.font.size.l}px;
+    line-height: ${theme.font.lineHeightMultiplier * 1.2};
+    margin-bottom: ${theme.size.xl}px;
   }
 
   strong {
